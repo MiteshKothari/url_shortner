@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+	root "shorteners#index"
+
+  resources :shorteners, only: [:index, :create] do
+    collection do
+      get :find
+    end
+  end
+  get "/:dilute", to: "shorteners#deflect"
 end

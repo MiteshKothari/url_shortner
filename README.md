@@ -1,25 +1,17 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 # url_shortner
+
+Ruby:
+Application used ruby-2.4.0 version
+
+Rails:
+
+This applicaiton uses 5.1.3 rails version
+
+To set up a development environment:
+
+    -> git clone https://github.com/MiteshKothari/url_shortner.git
+    -> cd url_shortner
+    -> bundle install
+    -> rake db:create && rake db:migrate
+    -> rails server

@@ -1,0 +1,51 @@
+<section class="content">
+  <div class="row">
+    <div class="col-sm-8 col-sm-push-2">
+      <div class="jumbotron" style="padding: 20px 60px 30px 60px;">
+        <h1 style="padding: 0px; font-size: 50px; text-align: center;">URL Shortener</h1>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-sm-9 col-sm-push-3">
+              <%= form_for(@shortener, html: {class: "from-inline"}) do |f| %>
+                <div class="form-group">
+                  <div class="col-md-7">
+                    <%= f.text_field :target , :class => "form-control", :placeholder => "Paste a link to shorten", required: true %>
+                    <label class="control-label label-danger hidden"></label>
+                  </div>
+                  <div class="col-md-5">
+                    <%= f.submit 'Generate', :class => "btn btn-primary" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <br/>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Target URL</th>
+                <th>Slug</th>
+                <th>Generated URL</th>
+                <th>Hits</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @shorteners.each_with_index do |sortener, index| %>
+              <tr>
+                <td><%=index+1%></td>
+                <td><%=sortener.target? %></td>
+                <td><%=sortener.dilute %></td>
+                <td><%=sortener.shorten %></td>
+                <td><%=sortener.hits%></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
