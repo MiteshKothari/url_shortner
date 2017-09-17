@@ -5,6 +5,7 @@ class ShortenersController < ApplicationController
     @shortener = Shortener.new
   end
 
+  # creating new shortner record
   def create
     @shortener = Shortener.where(target: shortener_params[:target]).first_or_initialize
     respond_to do |format|
@@ -17,6 +18,7 @@ class ShortenersController < ApplicationController
     end
   end
 
+  # increments count of hit for hitted url
   def deflect
     if params[:dilute]
       @shortner = Shortener.find_by(dilute: params[:dilute])
@@ -27,14 +29,8 @@ class ShortenersController < ApplicationController
     end
   end
 
-  def find
-    shorteners = Shortener.where("target ilike :target", target: params[:target])
-    respond_to do |format|
-      format.json {render  json: shorteners}
-    end
-  end
-
   private
+    # allowed params
     def shortener_params
       params.require(:shortener).permit(:target)
     end
