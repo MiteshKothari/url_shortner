@@ -20,17 +20,13 @@ class Shortener < ApplicationRecord
 
     # this method creates shortner slug
     def generate_dilute
-      alpha = ('a'...'z').to_a
-      alphau = ('A'...'Z').to_a
-      num = (0...9).to_a
-      alphanum = alpha+num+alphau
       found = false
-      slug = ""
       until found
-        slug = alphanum.shuffle[0...3].join('')
+        slug = SecureRandom.hex(rand(1..5)) #customize range based on requirement
         found = Shortener.where(dilute: slug).take.nil?
       end
       self.dilute = slug
       self.hits = 0
     end
+
 end
